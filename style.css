@@ -101,8 +101,20 @@ button:focus {
   outline: none;
 }
 
+/* ✅ ROUNDED IMAGES ADDED (minimal + safe) */
 img {
   transition: filter 0.5s;
+}
+
+/* round the main images */
+.header__img,
+.features__img {
+  border-radius: 1.5rem; /* change this to 1rem or 2rem if you want */
+}
+
+/* round the logo slightly (optional, but looks nice) */
+.nav__logo {
+  border-radius: 0.8rem;
 }
 
 .lazy-img {

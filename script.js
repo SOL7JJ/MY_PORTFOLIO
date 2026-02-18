@@ -226,3 +226,35 @@ const slider = function () {
 };
 
 slider();
+///////////////////////////////////////
+// Booking form -> send email via Formspree (static-site friendly)
+const bookingForm = document.querySelector('#bookingForm');
+
+if (bookingForm) {
+  bookingForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // 🔥 Paste your Formspree endpoint here:
+    const FORMSPREE_URL = 'https://formspree.io/projects/2514740145769414549';
+
+    const formData = new FormData(bookingForm);
+
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        bookingForm.reset();
+        closeModal(); // uses your existing function
+        alert('Thanks! Your booking request has been sent. I’ll reply shortly.');
+      } else {
+        alert('Sorry, something went wrong. Please try again.');
+      }
+    } catch (err) {
+      alert('Network error. Please try again.');
+    }
+  });
+}
