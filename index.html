@@ -300,18 +300,28 @@
       </h2>
 
       <!-- ✅ THIS IS NOW THE ONLY BOOKING FORM -->
-      <form class="modal__form" id="bookingForm">
-        <label>First Name</label>
-        <input type="text" name="firstName" required />
+      <form
+  class="modal__form"
+  id="bookingForm"
+  action="https://formspree.io/f/mldjgppg"
+  method="POST"
+>
+  <label>First Name</label>
+  <input type="text" name="firstName" required />
 
-        <label>Last Name</label>
-        <input type="text" name="lastName" required />
+  <label>Last Name</label>
+  <input type="text" name="lastName" required />
 
-        <label>Email Address</label>
-        <input type="email" name="email" required />
+  <label>Email Address</label>
+  <input type="email" name="email" required />
 
-        <button class="btn" type="submit">Next step &rarr;</button>
-      </form>
+  <!-- optional extras -->
+  <input type="hidden" name="_subject" value="New lesson booking enquiry" />
+  <input type="text" name="_gotcha" style="display:none" />
+
+  <button class="btn" type="submit">Next step &rarr;</button>
+</form>
+
     </div>
 
     <div class="overlay hidden"></div>
