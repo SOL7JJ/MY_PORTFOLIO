@@ -620,3 +620,260 @@ h4 {
   visibility: hidden;
   opacity: 0;
 }
+
+/* =========================
+   MOBILE + TABLET FIXES
+   Paste at the bottom
+========================= */
+
+/* Make layouts flexible on small screens */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Tablet & below ---------- */
+@media (max-width: 900px) {
+  .section {
+    padding: 10rem 2rem;
+  }
+
+  .features {
+    margin: 0 2rem;
+    gap: 3rem;
+  }
+
+  .features__feature {
+    width: 100%;
+  }
+
+  .operations {
+    margin: 8rem 2rem 0 2rem;
+  }
+
+  .operations__content {
+    padding: 2.5rem 3rem 4.5rem 3rem;
+  }
+
+  .testimonial {
+    width: 85%;
+  }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 600px) {
+  html {
+    font-size: 56.25%; /* slightly smaller than 62.5% */
+  }
+.nav.sticky {
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.btn {
+  padding: 1
+}
+  /* NAV: prevent overflow */
+  .nav {
+    padding: 0 1.5rem;
+    height: auto;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .nav__logo {
+    height: 4rem;
+  }
+
+  .nav__links {
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .nav__item {
+    margin-left: 0;
+  }
+
+  .nav__link:link,
+  .nav__link:visited {
+    font-size: 1.5rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  /* HEADER: stack text + image */
+  .header {
+    height: auto;
+    min-height: 100vh;
+    padding: 0 1.5rem;
+  }
+
+  .header__title {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+    justify-items: start;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+  }
+
+  h1 {
+    font-size: 3.6rem;
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-size: 1.8rem;
+  }
+
+  .header__img {
+    grid-column: 1;
+    grid-row: auto;
+    transform: none;
+    margin-top: 1rem;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 8rem 1.5rem;
+  }
+
+  .section__title {
+    margin: 0 auto 4rem auto;
+  }
+
+  .section__header {
+    font-size: 3rem;
+  }
+
+  /* FEATURES: single column */
+  .features {
+    grid-template-columns: 1fr;
+    margin: 0;
+    gap: 2.5rem;
+  }
+
+  .features__feature {
+    width: 100%;
+    justify-self: start;
+  }
+
+  /* OPERATIONS: tabs wrap nicely */
+  .operations__tab-container {
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0 1.5rem;
+  }
+
+  .operations__tab {
+    margin-right: 0;
+    transform: none;
+  }
+
+  .operations__tab--active {
+    transform: none;
+  }
+
+  .operations__content--active {
+    grid-template-columns: 1fr;
+  }
+
+  .operations__icon {
+    height: 6rem;
+    width: 6rem;
+  }
+
+  .operations__content p {
+    grid-column: 1;
+  }
+
+  /* SLIDER: remove fixed height feel */
+  .slider {
+    height: auto;
+    max-width: 100%;
+    padding-bottom: 5rem;
+  }
+
+  .slide {
+    height: auto;
+    padding: 2rem 0;
+  }
+
+  .slider__btn {
+    height: 4.5rem;
+    width: 4.5rem;
+    font-size: 2.6rem;
+  }
+
+  /* TESTIMONIAL */
+  .testimonial {
+    width: 92%;
+  }
+
+  .testimonial::before {
+    font-size: 12rem;
+    top: -3.5rem;
+    left: -2.5rem;
+  }
+
+  .testimonial__author {
+    margin-left: 0;
+    grid-template-columns: 5.5rem 1fr;
+  }
+
+  .testimonial__photo {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  /* SIGN UP */
+  .section--sign-up {
+    padding: 7rem 1.5rem;
+  }
+
+  .section--sign-up .btn {
+    width: 100%;
+    max-width: 32rem;
+    padding: 1.6rem 2rem;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 6rem 1.5rem;
+  }
+
+  .footer__nav {
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer__item {
+    margin-right: 0;
+  }
+
+  /* MODAL: make it fit phone */
+  .modal {
+    width: calc(100% - 3rem);
+    max-width: 52rem;
+    padding: 3rem 2rem;
+  }
+
+  .modal__header {
+    font-size: 2.4rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .modal__form {
+    margin: 0;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .modal__form button {
+    grid-column: 1;
+    width: 100%;
+  }
+}
