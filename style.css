@@ -1,16 +1,21 @@
 :root {
-  --color-primary: #5ec576;
+  --color-primary: #D4A43A;          /* main gold */
   --color-secondary: #ffcb03;
   --color-tertiary: #ff585f;
-  --color-primary-darker: #4bbb7d;
+
+  --color-primary-darker: #B8862B;   /* hover colour */
   --color-secondary-darker: #ffbb00;
   --color-tertiary-darker: #fd424b;
-  --color-primary-opacity: #5ec5763a;
+
+  --color-primary-opacity: #F6E7C3;  /* soft background */
   --color-secondary-opacity: #ffcd0331;
   --color-tertiary-opacity: #ff58602d;
-  --gradient-primary: linear-gradient(to top left, #39b385, #9be15d);
+
+  --gradient-primary: none;
   --gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
 }
+
+
 
 * {
   margin: 0;
@@ -28,7 +33,7 @@ body {
   font-weight: 300;
   color: #444;
   line-height: 1.9;
-  background-color: #f3f3f3;
+  background-color: #f8f8f8;
 }
 
 /* GENERAL ELEMENTS */
@@ -214,9 +219,19 @@ h4 {
   transform: translateY(-6rem);
 }
 
+/* ===== PERFECT ROUNDED GOLD PILLS ===== */
+
 .highlight {
-  position: relative;
+  display: inline-block;          /* makes background wrap text */
+  background: #D4A43A;            /* gold colour */
+  color: white;
+  padding: 0.12em 0.45em;         /* controls pill size */
+  border-radius: 999px;           /* FULL rounding */
+  line-height: 1.1;
+  font-weight: 600;
 }
+
+
 
 .highlight::after {
   display: block;
@@ -231,6 +246,8 @@ h4 {
   transform: scale(1.07, 1.05) skewX(-15deg);
   background-image: var(--gradient-primary);
 }
+
+
 
 /* FEATURES */
 .features {
