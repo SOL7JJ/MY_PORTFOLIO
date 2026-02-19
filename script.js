@@ -368,9 +368,11 @@ if (bookingForm) {
   bookingForm.addEventListener('submit', async function (e) {
     e.preventDefault();
 
+        const FORMSPREE_URL = 'https://formspree.io/f/mldjgppg';
+
     // ✅ Replace placeholder with your REAL Formspree endpoint.
     // It should match the one in your HTML form action attribute.
-    const FORMSPREE_URL = 'https://formspree.io/f/mldjgppg';
+   
 
     // Gather form fields into FormData for POST request
     const formData = new FormData(bookingForm);
