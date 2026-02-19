@@ -32,7 +32,29 @@ const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
 
 // Footer year (auto-updates each year)
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+/* ============================================================
+   SUCCESS MESSAGE (custom "Thank you for booking!" toast)
+   This replaces the ugly browser alert "127.0.0.1 says..."
+   It injects a small message into the DOM and removes it after 3s.
+============================================================ */
+const showSuccessMessage = function () {
+  // If one already exists, remove it (prevents stacking)
+  const existing = document.querySelector('.success-message');
+  if (existing) existing.remove();
+
+  const message = document.createElement('div');
+  message.classList.add('success-message');
+  message.textContent = 'Thank you for booking!';
+
+  document.body.appendChild(message);
+
+  setTimeout(() => {
+    message.remove();
+  }, 3000); // disappears after 3 seconds
+};
 
 ///////////////////////////////////////
 // MODAL WINDOW (booking popup)
@@ -352,15 +374,7 @@ slider();
 // - Sends the form to Formspree using fetch()
 // - On success:
 //   - sends GA4 event "generate_lead"
-//   - resets form, closes modal, shows success alert
-//
-// IMPORTANT:
-// - You must replace FORMSPREE_URL with your real endpoint.
-//   Your HTML currently posts to:
-//   action="https://formspree.io/f/mldjgppg"
-//
-// So you should set:
-//   const FORMSPREE_URL = 'https://formspree.io/f/mldjgppg';
+//   - resets form, closes modal, shows custom success message
 ///////////////////////////////////////
 const bookingForm = document.querySelector('#bookingForm');
 
@@ -368,11 +382,8 @@ if (bookingForm) {
   bookingForm.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-        const FORMSPREE_URL = 'https://formspree.io/f/mqedlrnk';
-
-    // ✅ Replace placeholder with your REAL Formspree endpoint.
-    // It should match the one in your HTML form action attribute.
-   
+    // ✅ Your real Formspree endpoint (from your Formspree dashboard)
+    const FORMSPREE_URL = 'https://formspree.io/f/mqedlrnk';
 
     // Gather form fields into FormData for POST request
     const formData = new FormData(bookingForm);
@@ -386,8 +397,6 @@ if (bookingForm) {
 
       if (res.ok) {
         // ✅ GA4 conversion / lead event
-        // This event will appear under Reports > Engagement > Events
-        // and can be marked as a Key event (conversion) in GA4 UI.
         if (typeof window.gtag === 'function') {
           window.gtag('event', 'generate_lead', {
             event_category: 'engagement',
@@ -395,14 +404,9 @@ if (bookingForm) {
           });
         }
 
-        // Reset form fields
         bookingForm.reset();
-
-        // Close modal for a nice UX
         closeModal();
-
-        // Feedback to user
-        alert('Thanks! Your booking request has been sent. I’ll reply shortly.');
+        showSuccessMessage(); // ✅ custom "Thank you for booking!" message
       } else {
         alert('Sorry, something went wrong. Please try again.');
       }
@@ -417,8 +421,6 @@ if (bookingForm) {
 //
 // Tracks when a user clicks any button/link that opens the modal.
 // (nav Book button, CTA Book button, footer Book link, etc.)
-//
-// FIX: We safely check gtag exists to avoid runtime errors.
 ///////////////////////////////////////
 document.querySelectorAll('.btn--show-modal').forEach(btn => {
   btn.addEventListener('click', () => {
