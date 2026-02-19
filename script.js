@@ -267,3 +267,8 @@ if (bookingForm) {
     }
   });
 }
+document.querySelectorAll('.btn--show-modal').forEach(btn => {
+  btn.addEventListener('click', () => {
+    gtag('event', 'book_lesson_click');
+  });
+});
